@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+nav {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    font-size: 1.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #34495e;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.form-container p {
+    margin-top: 1rem;
+    text-align: center;
+    color: #666;
+}
+
+.form-container a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
+
+.tasks-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tasks-container h2 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+}
+
+.add-task-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.add-task-form h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.tasks-list h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.task-item {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid #95a5a6;
+}
+
+.task-item.status-created {
+    border-left-color: #3498db;
+}
+
+.task-item.status-in_progress {
+    border-left-color: #f39c12;
+}
+
+.task-item.status-completed {
+    border-left-color: #27ae60;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.task-header h4 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status-created .status-badge {
+    background-color: #3498db;
+    color: white;
+}
+
+.status-in_progress .status-badge {
+    background-color: #f39c12;
+    color: white;
+}
+
+.status-completed .status-badge {
+    background-color: #27ae60;
+    color: white;
+}
+
+.task-description {
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.task-date {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 0.5rem 0;
+}
+
+.task-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-progress {
+    background-color: #f39c12;
+    color: white;
+}
+
+.btn-complete {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.no-tasks {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+}
+/* Comments Section */
+.comments-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.comments-section h5 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.comments-list {
+    margin-bottom: 1rem;
+}
+
+.comment-item {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid #3498db;
+}
+
+.comment-text {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.comment-meta {
+    font-size: 0.8rem;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-status {
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.comment-date {
+    font-style: italic;
+}
+
+.no-comments {
+    color: #999;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
+    min-height: 60px;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.btn-comment {
+    background-color: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}

@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="tasks-container">
+    <h2>My Tasks</h2>
+    
+    <!-- Add Task Form -->
+    <div class="add-task-form">
+        <h3>Add New Task</h3>
+        <form method="POST" action="{{ url_for('add_task') }}">
+            <div class="form-group">
+                <label for="title">Task Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description (optional):</label>
+                <textarea id="description" name="description" rows="3"></textarea>
+            </div>
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+
+    <!-- Tasks List -->
+    <div class="tasks-list">
+        <h3>Your Tasks</h3>
+        {% if tasks %}
+            {% for task in tasks %}
+            <div class="task-item status-{{ task.status }}">
+                <div class="task-header">
+                    <h4>{{ task.title }}</h4>
+                    <span class="status-badge">{{ task.status }}</span>
+                </div>
+                {% if task.description %}
+                    <p class="task-description">{{ task.description }}</p>
+                {% endif %}
+                <p class="task-date">Created: {{ task.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+                
+                <div class="task-actions">
+                    {% if task.status == 'created' %}
+                        <a href="{{ url_for('update_status', task_id=task.id, new_status='in_progress') }}" class="btn btn-progress">Start</a>
+                    {% endif %}
+                    
+                    {% if task.status == 'in_progress' %}
+                        <a href="{{ url_for('update_status', task_id=task.id, new_status='completed') }}" class="btn btn-complete">Complete</a>
+                    {% endif %}
+                    
+                    {% if task.status != 'completed' %}
+                        <a href="{{ url_for('update_status', task_id=task.id, new_status='completed') }}" class="btn btn-complete">Mark Complete</a>
+                    {% endif %}
+                    
+                    <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this task?')">Delete</a>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h5>Comments:</h5>
+                    {% set task_comments = task.comments|sort(attribute='created_at', reverse=True) %}
+                    {% if task_comments %}
+                        <div class="comments-list">
+                            {% for comment in task_comments %}
+                            <div class="comment-item">
+                                <p class="comment-text">{{ comment.text }}</p>
+                                <p class="comment-meta">
+                                    <span class="comment-status">Status: {{ comment.status_at_time }}</span>
+                                    <span class="comment-date">{{ comment.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="no-comments">No comments yet.</p>
+                    {% endif %}
+                    
+                    <!-- Add Comment Form -->
+                    <form method="POST" action="{{ url_for('add_comment', task_id=task.id) }}" class="comment-form">
+                        <textarea name="comment" placeholder="Add a comment..." rows="2" required></textarea>
+                        <button type="submit" class="btn btn-comment">Add Comment</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-tasks">No tasks yet. Add your first task above!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
