@@ -21,3 +21,7 @@ Thumbs.db
 
 # Environment variables
 .env
+
+# Database backups
+*.sql
+database_backup.sql
