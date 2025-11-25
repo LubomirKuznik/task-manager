@@ -65,7 +65,7 @@ def send_verification_email(email, username, token):
     verification_url = url_for('verify_email', token=token, _external=True)
     
     params = {
-        "from": "onboarding@resend.dev",
+        "from": "noreply@klportfolio.ch",
         "to": [email],
         "subject": "Verify your Task Manager account",
         "html": f"""
@@ -88,7 +88,7 @@ def send_password_reset_email(email, username, token):
     reset_url = url_for('reset_password', token=token, _external=True)
     
     params = {
-        "from": "onboarding@resend.dev",
+        "from": "noreply@klportfolio.ch",
         "to": [email],
         "subject": "Reset your Task Manager password",
         "html": f"""
